@@ -577,7 +577,7 @@
             font-size: 14px;
         }
 
-        /* Modal Styles */
+        /* Modal Styles - FIXED */
         .modal {
             display: none;
             position: fixed;
@@ -612,6 +612,14 @@
             cursor: pointer;
             color: #666;
             transition: color 0.3s;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
         }
 
         .close-modal:hover {
@@ -1132,7 +1140,7 @@
     <!-- Workers Modal -->
     <div id="workersModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeWorkersModal()">&times;</span>
+            <button class="close-modal" onclick="closeWorkersModal()">&times;</button>
             <h2 class="section-title">Our Talented Team</h2>
             <div id="workersList" class="workers-grid"></div>
         </div>
@@ -1141,7 +1149,7 @@
     <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <button class="close-modal" onclick="closeContactModal()">&times;</button>
             <h2 class="section-title">Contact Our Team</h2>
             <p style="text-align: center; margin-bottom: 30px;">Get in touch with our talented stylists directly for appointments and consultations.</p>
             <div id="contactWorkersList" class="workers-grid"></div>
@@ -1151,7 +1159,7 @@
     <!-- Login Modal -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <button class="close-modal" onclick="closeLoginModal()">&times;</button>
             <h2 class="section-title">Staff Login</h2>
             <div id="loginFormDiv" class="login-form">
                 <div class="form-group">
@@ -1376,7 +1384,7 @@
             });
         }
 
-        // Modal functions
+        // Modal functions - FIXED
         function openWorkersModal() {
             displayWorkers();
             document.getElementById('workersModal').style.display = 'flex';
@@ -1501,9 +1509,9 @@
             }
         }
 
-        // Close modals when clicking outside
+        // Close modals when clicking outside - FIXED
         window.onclick = function(event) {
-            if (event.target.className === 'modal') {
+            if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
             }
         }

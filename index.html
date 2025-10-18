@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vereeniging Beauty Studio - Premium Hair & Nail Salon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s 0.2s backwards;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            padding: 18px 45px;
+            border-radius: 30px;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeInUp 1s 0.4s backwards;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .services {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .about {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 0;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .about-text h4 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            margin: 25px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%);
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 18px;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #667eea;
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 10px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            border-radius: 20px;
+            color: white;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 35px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .worker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .worker-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .worker-card:hover {
+            transform: scale(1.05);
+        }
+
+        .worker-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .worker-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .worker-specialty {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .worker-services {
+            text-align: left;
+            margin: 15px 0;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .worker-contact {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #667eea;
+        }
+
+        .phone-number {
+            font-size: 18px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        .dashboard {
+            display: none;
+            padding: 30px;
+            background: #f5f7fa;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .dashboard h3 {
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .photo-upload {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .uploaded-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .photo-thumbnail {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .logo {
+                font-size: 24px;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .btn-primary {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .worker-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 25px;
+                margin: 20px;
+            }
+
+            .close-modal {
+                font-size: 28px;
+                top: 15px;
+                right: 15px;
+            }
+
+            .about-text {
+                padding: 30px 20px;
+            }
+
+            .about-text h3 {
+                font-size: 26px;
+            }
+
+            .about-text h4 {
+                font-size: 20px;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .feature-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .services, .about {
+                padding: 50px 0;
+            }
+
+            .uploaded-photos {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .service-card h3 {
+                font-size: 24px;
+            }
+
+            .worker-name {
+                font-size: 20px;
+            }
+
+            .phone-number {
+                font-size: 16px;
+            }
+
+            .about-text {
+                padding: 20px 15px;
+            }
+
+            .about-text h3 {
+                font-size: 22px;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">✨ Sedi TVET Beauty Studio</div>
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <button class="btn-login" onclick="openLoginModal()">Staff Login</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Your Look</h1>
+            <p>Premium Hair Styling & Nail Services in Vereeniging</p>
+            <button class="btn-primary" onclick="openWorkersModal()">View Our Stylists & Book Now</button>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>💇 Hair Styling</h3>
+                    <p>Expert cuts, coloring, treatments, and styling for all hair types. From classic looks to trendy transformations.</p>
+                </div>
+                <div class="service-card">
+                    <h3>💅 Nail Services</h3>
+                    <p>Professional manicures, pedicures, gel nails, and nail art. Pamper yourself with our premium nail care.</p>
+                </div>
+                <div class="service-card">
+                    <h3>✂️ Special Treatments</h3>
+                    <p>Deep conditioning, keratin treatments, scalp massages, and more. Give your hair the care it deserves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to Sedibeng TVET College Beauty Studio</h3>
+                    <p>Located in the heart of Vereeniging, we are your premier destination for exceptional hair and nail services. Since our establishment, we've been committed to making every client feel beautiful, confident, and pampered.</p>
+                    
+                    <h4>Our Story</h4>
+                    <p>Sedibeng Beauty Studio was born from a passion for beauty and a desire to create a welcoming space where everyone can experience professional, personalized care. Our team of skilled stylists and technicians bring years of experience and continuous training to ensure you receive the latest techniques and trends.</p>
+                    
+                    <h4>Why Choose Us?</h4>
+                    <div class="features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✨</span>
+                            <div>
+                                <strong>Expert Team</strong>
+                                <p>Highly trained professionals passionate about their craft</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">💎</span>
+                            <div>
+                                <strong>Quality Products</strong>
+                                <p>We use only premium, trusted brands for all services</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏆</span>
+                            <div>
+                                <strong>Personalized Service</strong>
+                                <p>Every client receives individual attention and customized care</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🌟</span>
+                            <div>
+                                <strong>Relaxing Atmosphere</strong>
+                                <p>A comfortable, clean environment where you can unwind</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Our Commitment</h4>
+                    <p>We believe beauty is for everyone. Whether you're preparing for a special occasion or just treating yourself to some self-care, our team is dedicated to delivering exceptional results that exceed your expectations. We stay current with the latest trends and techniques while honoring classic styles that never go out of fashion.</p>
+                    
+                    <p class="cta-text">Visit us in Vereeniging and discover why our clients keep coming back. Book your appointment today and experience the difference!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workers Modal -->
+    <div id="workersModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeWorkersModal()">&times;</span>
+            <h2 class="section-title">Our Talented Team</h2>
+            <div id="workersList" class="worker-grid"></div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <h2 class="section-title">Staff Login</h2>
+            <div id="loginFormDiv" class="login-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password">
+                </div>
+                <button class="btn-submit" onclick="handleLogin()">Login</button>
+            </div>
+            <div id="dashboardDiv" class="dashboard">
+                <h3>Welcome, <span id="loggedInName"></span>!</h3>
+                <button class="btn-submit" onclick="handleLogout()" style="width: auto; padding: 10px 30px; margin-bottom: 20px;">Logout</button>
+                
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="workerName" placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label>Specialty</label>
+                    <select id="workerSpecialty">
+                        <option>Hair Stylist</option>
+                        <option>Nail Technician</option>
+                        <option>Hair & Nails Specialist</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number (South African)</label>
+                    <input type="tel" id="workerPhone" placeholder="0XX XXX XXXX">
+                </div>
+                <div class="form-group">
+                    <label>Services & Prices (one per line, format: Service Name - R Amount)</label>
+                    <textarea id="workerServices" rows="5" placeholder="Haircut - R150&#10;Hair Coloring - R350&#10;Manicure - R120"></textarea>
+                </div>
+                <button class="btn-submit" onclick="saveWorkerInfo()">Save Information</button>
+
+                <div class="photo-upload">
+                    <h4>Upload Your Work Photos</h4>
+                    <input type="file" id="photoUpload" accept="image/*" multiple onchange="handlePhotoUpload()">
+                    <div id="uploadedPhotos" class="uploaded-photos"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data stored in memory
+        let workers = [
+            {
+                id: 1,
+                email: 'thandi@vereenigingbeauty.co.za',
+                password: 'demo123',
+                name: 'Thandi Mthembu',
+                specialty: 'Hair Stylist',
+                phone: '071 234 5678',
+                services: [
+                    { name: 'Haircut', price: 'R150' },
+                    { name: 'Hair Coloring', price: 'R350' },
+                    { name: 'Blow Dry', price: 'R100' }
+                ],
+                photos: []
+            },
+            {
+                id: 2,
+                email: 'zinhle@vereenigingbeauty.co.za',
+                password: 'demo123',
+                name: 'Zinhle Dlamini',
+                specialty: 'Nail Technician',
+                phone: '082 987 6543',
+                services: [
+                    { name: 'Manicure', price: 'R120' },
+                    { name: 'Pedicure', price: 'R150' },
+                    { name: 'Gel Nails', price: 'R250' }
+                ],
+                photos: []
+            },
+            {
+                id: 3,
+                email: 'nomsa@vereenigingbeauty.co.za',
+                password: 'demo123',
+                name: 'Nomsa Khumalo',
+                specialty: 'Hair & Nails Specialist',
+                phone: '076 555 4321',
+                services: [
+                    { name: 'Full Hair Service', price: 'R400' },
+                    { name: 'Nail Art', price: 'R180' },
+                    { name: 'Hair Treatment', price: 'R200' }
+                ],
+                photos: []
+            }
+        ];
+
+        let currentUser = null;
+
+        function displayWorkers() {
+            const workersList = document.getElementById('workersList');
+            workersList.innerHTML = '';
+
+            workers.forEach(worker => {
+                const initials = worker.name.split(' ').map(n => n[0]).join('');
+                const workerCard = document.createElement('div');
+                workerCard.className = 'worker-card';
+                workerCard.innerHTML = `
+                    <div class="worker-photo">${initials}</div>
+                    <div class="worker-name">${worker.name}</div>
+                    <div class="worker-specialty">${worker.specialty}</div>
+                    <div class="worker-services">
+                        ${worker.services.map(s => `
+                            <div class="service-item">
+                                <span>${s.name}</span>
+                                <strong>${s.price}</strong>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="worker-contact">
+                        <div class="phone-number">📱 ${worker.phone}</div>
+                    </div>
+                `;
+                workersList.appendChild(workerCard);
+            });
+        }
+
+        function openWorkersModal() {
+            displayWorkers();
+            document.getElementById('workersModal').style.display = 'flex';
+        }
+
+        function closeWorkersModal() {
+            document.getElementById('workersModal').style.display = 'none';
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('loginFormDiv').style.display = 'block';
+            document.getElementById('dashboardDiv').style.display = 'none';
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const user = workers.find(w => w.email === email && w.password === password);
+
+            if (user) {
+                currentUser = user;
+                document.getElementById('loginFormDiv').style.display = 'none';
+                document.getElementById('dashboardDiv').style.display = 'block';
+                document.getElementById('loggedInName').textContent = user.name;
+                
+                // Populate form with existing data
+                document.getElementById('workerName').value = user.name;
+                document.getElementById('workerSpecialty').value = user.specialty;
+                document.getElementById('workerPhone').value = user.phone;
+                document.getElementById('workerServices').value = user.services.map(s => `${s.name} - ${s.price}`).join('\n');
+                
+                displayUploadedPhotos();
+            } else {
+                alert('Invalid credentials. Try:\nEmail: thandi@luxe.co.za\nPassword: demo123');
+            }
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            closeLoginModal();
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+
+        function saveWorkerInfo() {
+            if (!currentUser) return;
+
+            const name = document.getElementById('workerName').value;
+            const specialty = document.getElementById('workerSpecialty').value;
+            const phone = document.getElementById('workerPhone').value;
+            const servicesText = document.getElementById('workerServices').value;
+
+            const services = servicesText.split('\n')
+                .filter(line => line.trim())
+                .map(line => {
+                    const parts = line.split('-').map(p => p.trim());
+                    return { name: parts[0], price: parts[1] || 'R0' };
+                });
+
+            const workerIndex = workers.findIndex(w => w.id === currentUser.id);
+            workers[workerIndex] = {
+                ...workers[workerIndex],
+                name,
+                specialty,
+                phone,
+                services
+            };
+
+            currentUser = workers[workerIndex];
+            
+            alert('Information saved successfully!');
+            displayWorkers();
+        }
+
+        function handlePhotoUpload() {
+            if (!currentUser) return;
+
+            const files = document.getElementById('photoUpload').files;
+            
+            for (let file of files) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const workerIndex = workers.findIndex(w => w.id === currentUser.id);
+                    workers[workerIndex].photos.push(e.target.result);
+                    displayUploadedPhotos();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function displayUploadedPhotos() {
+            if (!currentUser) return;
+
+            const photosDiv = document.getElementById('uploadedPhotos');
+            photosDiv.innerHTML = '';
+
+            const worker = workers.find(w => w.id === currentUser.id);
+            if (worker && worker.photos) {
+                worker.photos.forEach(photo => {
+                    const img = document.createElement('img');
+                    img.src = photo;
+                    img.className = 'photo-thumbnail';
+                    photosDiv.appendChild(img);
+                });
+            }
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
